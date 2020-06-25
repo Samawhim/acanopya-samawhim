@@ -1,0 +1,64 @@
+.btn-primary {
+  transition: scale .7s ease-out;
+  transform: scale(1);
+  &:hover {
+    transform: scale(1.03);
+    transition: scale .7s ease-out;
+  }
+}
+
+.btn-grad {
+	background-image: linear-gradient(to right, #06afaf 0%, #00c795 100%);
+	color: white
+}
+
+.border-right {
+  border-radius: 0px 50px 50px 0px !important;
+}
+
+//.padding-12-px {
+//  padding: 12px !important;
+//}
+
+//#search_price_min {
+//padding: 12px !important;
+// height: unset !important;
+//}
+
+//#search_price_max {
+//  padding: 12px !important;
+//  height: unset !important;
+//}
+
+//#search_category {
+//  padding: 12px !important;
+//  height: unset !important;
+//}
+
+.background_color_grey {
+  background-color: #f5f5f5 !important;
+}
+
+.border_light_grey {
+  border:1px solid lightgray ;
+}
+
+.no_border {
+  border-bottom: 1px solid #ced4da !important;
+}
+
+.text_color_green {
+  color: #2accab;
+}
+
+.hover_btn_search {
+  &:hover {
+    color: #0d7374 !important; 
+    border:1px solid lightgray !important ;
+  }
+}
+
+
+//#search_price_min {
+//  border-radius: 50px 0px 0px 50px;
+//}

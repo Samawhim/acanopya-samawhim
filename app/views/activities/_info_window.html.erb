@@ -1,0 +1,9 @@
+<div class="card-window">
+  <div class="photo-info">
+    <% if activity.photos.any? %>
+      <%= cl_image_tag activity.photos.first.key %>
+    <% end %>
+  </div>
+  <h2><%= activity.name %></h2>
+  <p><%= activity.address %></p>
+</div>

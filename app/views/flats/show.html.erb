@@ -1,0 +1,197 @@
+<div class="container-fluid p-4">
+  <div class="content">
+    <div style='width: 100%'>
+      <div>
+        <div class='show-title'>
+          <%= link_to ('<i class="far return-fa fa-angle-left"></i>').html_safe, trip_flats_path(@trip) %>
+          <div>
+            <h4><%= @flat.address %></h4>
+            <h1><%= @flat.name %></h1>
+          </div>
+        </div>
+        <div class="rounded px-3">
+          <div class="gallery">
+            <div class="img-principale">
+              <%= cl_image_tag @flat.photos.first.key, height: 385, crop: :fill, class:"w-100 h-100" %>
+            </div>
+            <div class="img-secondaires">
+              <% (1..3).each do |number| %>
+                <% if @flat.photos[number].nil? %>
+                  <button class="img-secondaire btn" type="button" data-toggle="modal" data-target="#exampleModalCenter" style="background-image: url(<%= cl_image_path 'photo.jpg' %>);"></button>
+                <% else %>
+                  <!-- Button trigger modal -->
+                  <button class="img-secondaire btn" type="button" data-toggle="modal" data-target="#exampleModalCenter-<%= number %>" style="background-image: url(<%= cl_image_path @flat.photos[number].key %>);"></button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter-<%= number %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content flat-modal">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- Code carroussel -->
+                          <%= cl_image_tag @flat.photos[number].key %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flat card -->
+      <div class="row p-4">
+        <div class="col-md-8">
+        
+          <p><%= @flat.description %></p>
+          <p>Cet hébergement est noté :
+            <% @flat.average_rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - @flat.average_rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </p>
+          <div class="reviews">
+          <h2><%= @flat_reviews.count %> commentaires</h2>
+            <% @flat_reviews.each do |flat_review| %>
+              <p><%= flat_review.user.first_name %></p>
+              <p><% flat_review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - flat_review.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+              </p>
+              <p><%= flat_review.content %></p>
+            <% end %>
+          </div>
+          <% if @flatreservation %>
+            <div class="review">
+              <h3>Laissez une évaluation</h3>
+              <%= simple_form_for @flat_review, url: flats_booking_flat_reviews_path(@flatreservation, html: { class: "review_form" }) do |f| %>
+                <%= f.input :content, label: false %>
+                <%= f.input :rating, collection: (1..5).to_a, label: "notez votre expérience" %>
+                <%= f.submit class: "d-none" %>
+              <% end %>
+            </div>
+          <% end %>
+          <%#= link_to "Retour aux hébergements", flats_path, class:"btn btn-secondary" %>
+        </div>
+        <div class="col-md-4">
+          <!-- Booking card -->
+          <div id="form_booking">
+            <div class="d-flex justify-content-between mt-2">
+              <div class="important">
+                <p><%= @flat.price %>€<span style="font-size: 16px">/ nuité par pers.</span></p>
+              </div>
+            </div>
+            <div>
+              <%= simple_form_for [@flat, @booking_flat], url:  flat_flats_bookings_path(@flat) do |f| %>
+                <%= f.input :trip_id, as: :hidden, input_html:{value:@trip.id} %>
+                <%= f.input :start_date, placeholder: "Date", as: :string, required: false, input_html: { class: "datepicker", value: @trip.start_date}, order: [:day, :month, :year], label: false %>
+                <%= f.input :end_date, placeholder: "Date de départ", as: :string, required: false, input_html: { class: "datepicker" }, order: [:day, :month, :year], label: false %>
+                <%= f.button :submit, "Réserver", class: "btn btn-primary w-100" %>
+              <% end %>
+            </div>
+            <div class="important">
+              <div class="d-flex justify-content-between mt-3">
+                <p><strong>Total</strong></p>
+                <p><strong><%= @price %>€</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <h2>Emplacement</h2>
+        <div id="map"
+          style="width: 100%; height: 300px; border-radius: 10px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+
+    <div id="trip-box" style="width: 300px; height: 100vh;">
+      <ul class="list-inline nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="t-tab-underlined nav-link active" id="trip-tab" data-toggle="tab" href="#trip" role="tab" aria-controls="trip" aria-selected="false">Mon voyage</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="trip" role="tabpanel" aria-labelledby="trip-tab">
+          <div class="trip-column">
+            <div class="trip-card-title">
+              <h6>Restaurants</h6>
+            </div>
+            <% unless @trip.restaurants.empty? %>
+              <% @trip.restaurants.each do |restaurant| %>
+                <div id="trip-card">
+                  <div class="left">
+                    <p><%= restaurant.name %></p>
+                    <p><span><%= restaurant.price %>€/ personne</span></p>
+                    <p><%= @trip.start_date %></p>
+                  </div>
+                  <div class="right">
+                    <a data-dismiss="alert" aria-label="Close">
+                      <i class="fas fa-times"></i>
+                    </a>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div>
+              <div class="trip-card-title">
+                <h6>Hébergements</h6>
+              </div>
+              <% unless @trip.flats.empty? %>
+                <% @trip.flats.each do |flat| %>
+                  <div id="trip-card">
+                    <div class="left">
+                      <p><%= flat.name %></p>
+                      <p><span><%= flat.price %>€ / nuité par pers.</span></p>
+                      <p><%= @trip.start_date %> - <%= @trip.end_date %></p>
+                    </div>
+                    <div class="right">
+                      <a data-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div>
+              <div class="trip-card-title">
+                <h6>Activités</h6>
+              </div>
+              <% unless @trip.activities.empty? %>
+                <% @trip.activities.each do |activity| %>
+                  <div id="trip-card">
+                    <div class="left">
+                      <p><%= activity.name %></p>
+                      <p><span><%= activity.price %>€ / personne</span></p>
+                      <p><%= @trip.start_date %></p>
+                    </div>
+                    <div class="right">
+                      <a data-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

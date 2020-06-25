@@ -1,0 +1,92 @@
+<div class="container py-4">
+    <h1>Tous Mes voyages</h1>
+    <br>
+    <br>
+    <ul>
+        <% @trips.each do |trip| %>
+        <div class="trip-box">
+            <div class="voyage-box">
+                <div class="voyage">
+                    <div>
+                    <h4>Mon séjour <%= link_to trip.name, trip_path(trip)%>, du <%= trip.start_date %> au <%= trip.end_date %> :</h4>
+                    </div>
+                </div>
+                <br>
+                <p>Mes réservations d'hébergements</p>
+                <% trip.booking_flats.each do |booking_flat| %> 
+                <div class="reservation-box">
+                    <div class="cards-sumup">
+                        <%= cl_image_tag booking_flat.flat.photos.first.key, class:'card-booking-img-sumup' %>
+                        <div class="card-booking-infos-sumup">
+                            <p><%= link_to booking_flat.flat.name, trip_flat_path(trip, booking_flat.flat) %></p>
+                            <p>Réservé du : <%= booking_flat.start_date %> au <%= booking_flat.end_date %></p> 
+                            <p>Pour un montant de : <%= booking_flat.flat.price %>0€ / nuité par personne </p>
+                            <p>Statut de votre réservation : 
+                            <% if booking_flat.status_reservation == "pending" %>
+                                <%="en attente de confirmation" %>
+                            <%end %></p>
+                            <p><%# if !booking_flat.flat_review.present? %>
+                                <%= link_to "Noter l'hébergement", trip_flat_path(trip, booking_flat.flat) %> à partir du <%= booking_flat.end_date %></p>
+                            <%# end %></p>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+                <p>Mes réservations de restaurants</p>
+                <% trip.booking_restaurants.each do |booking_restaurant| %> 
+                <div class="reservation-box">
+                    <div class="cards-sumup">
+                        <%= cl_image_tag booking_restaurant.restaurant.photos.first.key, class:'card-booking-img-sumup' %>
+                        <div class="card-booking-infos-sumup">
+                            <p><%= link_to booking_restaurant.restaurant.name, trip_restaurant_path(trip, booking_restaurant.restaurant) %></p>
+                            <p>Réservé le : <%= booking_restaurant.start_date %>
+                            <p>Pour un montant de : <%= booking_restaurant.restaurant.price %>0€ /menu par personne</p>
+                            <p>Statut de votre réservation : 
+                            <% if booking_restaurant.status_reservation == "pending" %>
+                                <%= "en attente de confirmation" %>
+                            <% end %></p>
+                            <p><%= link_to "Noter le restaurant", trip_restaurant_path(trip, booking_restaurant.restaurant) %> à partir du <%= booking_restaurant.start_date %></p>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+                <p>Mes réservations d'activités</p>
+                <% trip.booking_activities.each do |booking_activity| %> 
+                <div class="reservation-box">
+                    <div class="cards-sumup">
+                        <%= cl_image_tag booking_activity.activity.photos.first.key, class:'card-booking-img-sumup' %>
+                        <div class="card-booking-infos-sumup">
+                            <p><%= link_to booking_activity.activity.name, trip_activity_path(trip, booking_activity.activity) %></p>
+                            <p>Réservé le : <%= booking_activity.start_date %></p> 
+                            <p>Pour un montant de : <%= booking_activity.activity.price %>0€ par personne</p>
+                            <p>Statut de votre réservation : 
+                            <% if booking_activity.status_reservation == "pending" %>
+                                <%= "en attente de confirmation" %>
+                            <% end %></p>
+                            <p><%= link_to "Noter l'activité", trip_activity_path(trip, booking_activity.activity) %> à partir du <%= booking_activity.start_date %></p>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+                <div>
+                </div>
+                <div class="partner">
+                <a href="https://www.goodplanet.org/fr/calculateurs-carbone/particulier/?calculator=1&action=calcul&type=voyage" target="_blank">
+                Calculez l'empreinte carbone de votre trajet avec notre partenaire Good Planet
+                </a>
+                </div>
+                <div>
+                    <% if policy(trip).destroy? %>
+                        <span><%= link_to "Supprimer mon voyage",
+                            trip_path(trip),
+                            method: :delete,
+                            data: { confirm: "Êtes-vous sûr?" } %></span>
+                    <% end %>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+        <% end %>
+    </ul>
+</div>

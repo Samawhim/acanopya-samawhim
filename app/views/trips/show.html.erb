@@ -1,0 +1,78 @@
+<div class="container py-4">
+  <%= render 'shared/tab', page: 'trip-show' %>
+  <div class="elements">
+    <div class='container cards-trip'>
+      <div class='blocs'>
+        <h2 class='pb-2 mb-2 border-bottom title-2'>Votre voyage<h2>
+        <div class='inline'>
+          <div class="cards">
+            <% @restaurants.each do |restaurant| %>
+              <%= link_to trip_restaurant_path(trip_id: @trip.id, id: restaurant.id) do %>
+                <div class="card-trip-2">
+                  <%= cl_image_tag restaurant.photos.first.key %>
+                  <div class="card-trip-infos-2">
+                    <div>
+                      <p><%= restaurant.address %></p>
+                      <h2 class="pb-2 mb-2 border-bottom-2"><%= restaurant.name %></h2>
+                      <p><%= restaurant.category %></p>
+                    </div>
+                    <h2 class="card-trip-pricing-2"><%= restaurant.price %>€</h2>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <% @activities.each do |activity| %>
+              <%= link_to trip_activity_path(trip_id: @trip.id, id: activity.id) do %>
+                <div class="card-trip-2">
+                  <%= cl_image_tag activity.photos.first.key %>
+                  <div class="card-trip-infos-2">
+                    <div>
+                      <p><%= activity.address %></p>
+                      <h2 class="pb-2 mb-2 border-bottom-2">
+                      <%= activity.name %>
+                      </h2>
+                      <p><%= activity.category %></p>
+                    </div>
+                    <h2 class="card-trip-pricing-2"><%= activity.price %>€</h2>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <% @flats.each do |flat| %>
+              <%= link_to trip_activity_path(trip_id: @trip.id, id: flat.id) do %>
+                <div class="card-trip-2">
+                  <%= cl_image_tag flat.photos.first.key %>
+                  <div class="card-trip-infos-2">
+                    <div>
+                      <p><%= flat.address %></p>
+                      <h2 class="pb-2 mb-2 border-bottom-2">
+                      <%= flat.name %>
+                      </h2>
+                    </div>
+                    <h2 class="card-trip-pricing-2"><%= flat.price %>€</h2>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pb-2"><h4></h4>
+      <div class="contain-map">
+        <div id="map"
+          role="tabpanel"
+          aria-labelledby="map-tab"
+          style="width: 450px; height: 100vh; border-radius: 10px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

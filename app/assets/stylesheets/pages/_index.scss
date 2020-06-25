@@ -1,0 +1,24 @@
+// Import page-specific CSS files here.
+@import "home";
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  //grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.content {
+  display: flex;
+}
+
+#trip-box {
+  position: sticky;
+  top: 70px;
+}
+
+#map {
+  height: 100vh;
+}

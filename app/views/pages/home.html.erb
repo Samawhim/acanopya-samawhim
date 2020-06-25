@@ -1,0 +1,67 @@
+<div id="banner" style="background-image: url(<%= image_path 'calanques.jpg' %>)">
+  <div class="container py-3">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-7 pb-5">
+          <div class="title">
+            <h1 class="pb-5">Oser un voyage<br>durable</h1>
+          </div>
+          <div class="subtitle-1 mt-5">
+            Vivez une expérience alternative en France ou à l’étranger
+          </div>
+        </div>
+        <div class="col-md-5 pb-5">
+          <div class="p-2" id="form_trip">
+            <%= simple_form_for(@trip) do |f| %>
+            <h2 class="pb-3">Créez votre voyage</h2>
+            <%= f.input :name, placeholder: "Nommez votre voyage", label: false %>
+              <div class="form-row">
+                <%= f.input :start_date, placeholder: "Date de debut", as: :string, required: false, input_html: {class: "datepicker"}, label: false, :order => [:day, :month, :year] %>
+                <%= f.input :end_date, placeholder: "Date de retour",as: :string, required: false, input_html: {class: "datepicker"}, label: false, :order => [:day, :month, :year] %>
+              </div>
+              <%= f.input :location, placeholder: "Où allez-vous ?", label: false %>
+              <%= f.input :number_of_travellers, placeholder: "Nombre de voyageurs", label: false %>
+              <%= f.submit "Commencer", class: "btn btn-primary w-100",  data: {turbolinks: "false"} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="bloc">
+    <div class="places-categories col-md-7" >
+      <div class="places-category">
+        <div class="card-category1">
+          Hébergements
+        </div>
+        <p>Des hébergements engagés dans le respect de l'environnement</p>
+      </div>
+      <div class="places-category">
+        <div class="card-category2">
+          Restaurants
+        </div>
+        <p>Des restaurants avec une démarche durable blablabla blablabla</p>
+      </div>
+      <div class="places-category">
+        <div class="card-category3">
+          Activités
+        </div>
+        <p>Des activités insolites proposés par les habitants locaux</p>
+      </div>
+    </div>
+  </div>
+
+<div class="bloc">
+  <div class="places-categories col-md-7" >
+    <div class="elementor">
+      <h2 class="text-center">Le tourisme durable</h2>
+        <p>Est une forme de voyage responsable qui contribue à la protection de l’environnement et au bien-être des populations locales. La question des impacts économiques, sociaux et environnementaux du tourisme sont au coeur de cette démarche</p>
+        <p> Nous collaborons avec des labels d'écotourisme certifiant les pratique écologique et équitable des prestataires que nous sélectionnons, tels que ATES et ATR , vous assurant une offre 100% éthique et durable.</p>
+      <h2 class="text-center">Acanopya s'engage à</h2>
+        <p><span class="sub-title">Sensibiliser</span> les voyageurs sur la pratique d’un tourisme durable et ses bienfaits.</p>
+        <p><span class="sub-title">Accompagner</span> les acteurs locaux touristiques engagés en étant sur la vitrine numérique d’Acanopya, un simple accès à leurs prestations supprime ainsi les filtres pour augmenter leur visibilité et leurs bénéfices financiers.</p>
+        <p><span class="sub-title">Agir ensemble</span> pour chaque prestation achetée sur la plateforme, un pourcentage est reversé aux véritables défenseurs de la nature pour une transformation carbone.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.mapboxgl-popup {
+  max-width: 200px;
+  max-height: 500px;
+}
+
+.mapboxgl-popup-content {
+  padding: 0px;
+  overflow: hidden;
+  //background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 10px;
+  justify-content: center;
+  h2 {
+    font-size: 17px;
+    font-family: $headers-font;
+    text-align: center;
+    padding-top: 12px;
+    color: #14b8b9;
+  }
+}
+
+// .card-window {
+// }
+
+.photo-info > img {
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #6e6f6f;
+  padding: 10px 22px;
+  width: 32px;
+  height: 32px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 1px solid #adb5bd;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  transition: scale .7s ease-out;
+  transform: scale(1);
+  &:hover {
+    transform: scale(1.03);
+    transition: scale .7s ease-out;
+    background-color: #6e6f6f;
+    color: #ffffff;
+  }
+}
+
+.contain-map {
+  margin-top: 160px;
+}

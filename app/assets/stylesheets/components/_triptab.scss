@@ -1,0 +1,108 @@
+#myTabContent {
+  justify-content: center;
+  margin-top: -2px;
+}
+
+.nav-link.active {
+  color: white !important;
+  background: linear-gradient(133deg, rgba(65,226,186,1) 0%, rgba(42,204,171,1) 63%, rgba(20,183,185,1) 100%);
+  border: none;
+  border-radius: 8px 8px 0px 0px;
+}
+
+#trip-tab.active {
+  box-shadow: 2px 0px 5px rgba(0,0,0,0.2);
+}
+
+#map-tab.active {
+  box-shadow: -2px 0px 5px rgba(0,0,0,0.2);
+}
+
+.nav-tabs .nav-item {
+  width: 50%;
+  text-align: center;
+}
+
+#trip-box .nav-link {
+  padding: 12px;
+}
+
+#myTab {
+  background: #f5f5f5;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.trip-card-title {
+  margin-top: 8px;
+  border-bottom: 2px dotted $green;
+  padding: 30px 20px 5px 20px;
+  background: white;
+  border-radius: 5px 5px 0px 0px;
+  width: 270px;
+  color: $green;
+  h6 {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+#trip-card {
+  color: gray;
+  //vertical-align: text-top;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  //box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  width: 270px;
+  font-weight: lighter;
+  font-size: 14px;
+  p {
+    margin-bottom: 0;
+  }
+  span {
+    font-weight: 600;
+    .two {
+      font-size: 12px;
+    }
+  }
+  &:not(:last-child) {
+    border-bottom: 2px dotted lightgray;
+  }
+}
+
+.trip-column {
+  overflow: scroll;
+  height: 600px;
+  width: 300px;
+  background: #f5f5f5;
+  padding: 8px 10px 8px 10px;
+  border-top: 1px solid lightgray;
+  position: relative;
+}
+
+.book-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 273px;
+  display: flex;
+}
+
+.important-btn {
+  color: white;
+  background: linear-gradient(133deg, #41e2ba 0%, #2accab 63%, #14b7b9 100%);
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+}

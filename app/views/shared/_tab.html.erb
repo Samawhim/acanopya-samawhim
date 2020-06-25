@@ -1,0 +1,26 @@
+<% 
+page = local_assigns.fetch(:page,'')
+hebergement= page == 'trip-show' ? 'Ajouter un hébergement' : 'Hébergements'
+restaurant= page == 'trip-show' ? 'Ajouter un restaurant' : 'Restaurants'
+activity= page == 'trip-show' ? 'Ajouter une activité' : 'Activités'
+
+%>
+<div class="container pt-4 pb-1">
+  <ul class="list-inline tabs-underlined">
+    <%# if current_page?(flats_path, restaurants_path, activities_path) %>
+      <% if user_signed_in? %>
+        <% if @trip&.persisted? %>
+          <li>
+            <%= link_to hebergement, trip_flats_path(@trip.id, active: :flats), class: "tab-underlined #{ 'active' if params[:active] == 'flats' || params[:active].nil? }", data: {turbolinks: "false"} %>
+          </li>
+          <li>
+            <%= link_to restaurant, trip_restaurants_path(@trip.id, active: :restaurants), class: "tab-underlined #{ 'active' if params[:active] == 'restaurants' }", data: {turbolinks: "false"} %>
+          </li>
+          <li>
+            <%= link_to activity, trip_activities_path(@trip.id, active: :activities), class: "tab-underlined #{ 'active' if params[:active] == 'activities' }", data: {turbolinks: "false"} %>
+          </li>
+        <% end %>
+      <% end %>
+    <%# end %>
+  </ul>
+</div>

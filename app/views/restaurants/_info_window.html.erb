@@ -1,0 +1,9 @@
+<div class="card-window">
+  <div class="photo-info">
+    <% if restaurant.photos.any? %>
+      <%= cl_image_tag restaurant.photos.first.key %>
+    <% end %>
+  </div>
+  <h2><%= restaurant.name %></h2>
+  <p><%= restaurant.address %></p>
+</div>

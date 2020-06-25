@@ -1,0 +1,10 @@
+# config/meta.yml
+
+meta_product_name: "Acanopya"
+meta_title: "Le voyage responsable qui respecte l'environnement"
+meta_description: "Le voyage durable consiste à réduire son impact négatif
+vers une destination donnée. Devenir collectivement
+plus conscient de ses choix peut avoir un impact
+cumulatif énorme."
+meta_image: "Acanopya.jpg" # should exist in `app/assets/images/`
+#twitter_account: "@acanopya_twitter_account"   # required for Twitter Cards

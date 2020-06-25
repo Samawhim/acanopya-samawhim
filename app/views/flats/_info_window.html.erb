@@ -1,0 +1,9 @@
+<div class="card-window">
+  <div class="photo-info">
+    <% if flat.photos.any? %>
+      <%= cl_image_tag flat.photos.first.key %>
+    <% end %>
+  </div>
+  <h2><%= flat.name %></h2>
+  <p><%= flat.address %></p>
+</div>

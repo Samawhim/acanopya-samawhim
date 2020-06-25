@@ -1,0 +1,129 @@
+<div class="container-fluid py-1">
+<%= render 'shared/tab' %>
+<div class='margin_filtres'>
+  <%= simple_form_for :search, url: trip_flats_path, method: 'GET', html: { class: 'form-inline' } do |f| %>
+    <%= f.input :price_min, placeholder: 'prix minimum', label: false, input_html: { value: @price_min} %>
+    <%= f.input :price_max, placeholder: 'prix maximum', label: false, input_html: { value: @price_max} %>
+    <div>
+    <%= f.submit "Rechercher", class: "btn btn-primary hover_btn_search no_border background_color_grey border_light_grey border-right padding-12-px text_color_green" %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+
+  <div class="content">
+    <div class="cards">
+      <% @flats.each do |flat| %>
+       <%= link_to trip_flat_path(trip_id: @trip.id, id: flat.id) do %>
+          <div class="card-trip">  
+            <%= cl_image_tag flat.photos.first.key %>
+            <div class="card-trip-infos">
+              <div class='card-trip-text'>
+                <p><%= flat.address %></p>
+                <h2 class="pb-2 mb-2"><%= flat.name %></h2>
+              </div>
+              <div>
+                <p>label : <%= flat.label %></p>
+                <h2 class="card-trip-pricing"><%= flat.price %>€</h2>
+              </div>
+            </div>
+          </div> 
+       <% end %> 
+      <% end %>
+    </div>
+    <div id="trip-box" style="width: 300px; height: 100vh;">
+      <ul class="list-inline nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="t-tab-underlined nav-link active" id="trip-tab" data-toggle="tab" href="#trip" role="tab" aria-controls="trip" aria-selected="false">Mon voyage</a> 
+        </li>
+        <li class="nav-item">
+          <a class="t-tab-underlined nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="true">Carte</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="trip" role="tabpanel" aria-labelledby="trip-tab">
+          <div class="trip-column">
+            <div class="trip-card-title">
+              <h6>Restaurants</h6>
+            </div>
+            <% unless @trip.restaurants.empty? %>
+              <% @trip.restaurants.each do |restaurant| %>
+                <div id="trip-card">
+                  <div class="left">
+                    <p><%= restaurant.name %></p>
+                    <p><span><%= restaurant.price %>€/ personne</span></p>
+                    <p><%= @trip.start_date %></p>
+                  </div>
+                  <div class="right">
+                    <a data-dismiss="alert" aria-label="Close">
+                      <i class="fas fa-times"></i>
+                    </a>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div>
+              <div class="trip-card-title">
+                <h6>Hébergements</h6>
+              </div>
+              <% unless @trip.flats.empty? %>
+                <% @trip.flats.each do |flat| %>
+                  <div id="trip-card">
+                    <div class="left">
+                      <p><%= flat.name %></p>
+                      <p><span><%= flat.price %>€/ nuité par personne</span></p>
+                      <p><%= @trip.start_date %> - <%= @trip.end_date %></p>
+                    </div>
+                    <div class="right">
+                      <a data-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div>
+              <div class="trip-card-title">
+                <h6>Activités</h6>
+              </div>
+              <% unless @trip.activities.empty? %>
+                <% @trip.activities.each do |activity| %>
+                  <div id="trip-card">
+                    <div class="left">
+                      <p><%= activity.name %></p>
+                      <p><span><%= activity.price %>€/ personne</span></p>
+                      <p><%= @trip.start_date %></p>
+                    </div>
+                    <div class="right">
+                      <a data-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="book-box">
+              <%= link_to "Réserver", trip_path(@trip), class: "important-btn" %>
+            </div>
+          </div> <!--end-->
+        </div>
+        <div class="tab-pane fade"
+          id="map"
+          role="tabpanel"
+          aria-labelledby="map-tab"
+          style="width: 300px; height: 100vh;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
