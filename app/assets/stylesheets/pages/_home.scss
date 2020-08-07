@@ -7,9 +7,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,500;0,563;1,500;1,562&display=swap');
 
 .title {
-  margin-top: 100px;
-  color:white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  padding-top: 30px;
+  color:$green;
 
   h1 {
     font-size: 70px;
@@ -17,7 +16,7 @@
   }
 }
 .title-2 {
-  margin-top: 100px;
+  // margin-top: 100px;
   color: #41E2BA;
 
   h1 {
@@ -27,28 +26,28 @@
 }
 
 .subtitle {
-  h1 {
-    font-size: 40px;
-    color: $blue;
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  }
   h2 {
-    font-family: literaty;
-    font-size: 27px;
+    font-size: 32px;
+    color: white;
     text-align: center;
-    color:  #41E2BA;
+  }
+  h3 {
+    margin-top: -15px;
+    padding-bottom: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: 25px;
+    color: #495057;
   }
 }
-.subtitile-1 {
-  font-family: literaty;
-  font-size: 27px;
-  font-weight: 200;
-  color: white;
-  line-height: 30px;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+// .subtitile-1 {
+//   font-family: literaty;
+//   font-size: 40px;
+//   font-weight: 200;
+//   color: lightgray;
+//   line-height: 30px;
+//   text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 
-}
+// }
 
 h4  {
   font-family: helvetica;
@@ -58,33 +57,30 @@ h4  {
   // text-shadow: 1px 1px 3px rgba(50, 1, 5, 0.3);
 }
 
-.subtitle-1 {
-  color: white;
-  font-size: 20px;
-  text-shadow: 1px 1px 3px rgba(50, 1, 5, 0.3);
-}
+// .subtitle-1 {
+//   color: white;
+//   font-size: 20px;
+//   text-shadow: 1px 1px 3px rgba(50, 1, 5, 0.3);
+// }
 
 .sub-title {
-  color: #41E2BA;
-  font-weight: 600;
+  color: #00ad82;
+  font-weight: 500;
 }
 
 #form_trip {
-  // padding-top: 10px;
-  // padding-bottom: 10px;
   position: fixed;
-  top: 55%;
-  right: 15px !important;
-  transform: translateY(-50%);
-  z-index: 1021;
-  right: 200px;
+  top: 120px;
+  right: 70px;
   border-radius: 15px;
   background: linear-gradient(133deg, rgba(65,226,186,1) 0%, rgba(42,204,171,1) 63%, rgba(20,183,185,1) 100%);
   #new_trip {
-    padding: 16px 20px;
+    padding: 46px 30px;
     width: 100%;
     h2 {
+      font-size: 34px;
       color: white;
+      font-family: Literata;
     }
     input, select {
       border: none;
@@ -92,10 +88,10 @@ h4  {
       background: none;
       border-radius: 0px;
       color: white;
-      height: 50px;
+      height: 58px;
       &::placeholder {
         color: white;
-        // font-size: 12px;
+        font-size: 16px;
       }
       &:focus {
         outline: none;
@@ -105,6 +101,7 @@ h4  {
       color: gray;
     }
     input.btn-primary {
+      text-transform: uppercase;
       background: white;
       color: $green;
       border-radius: 30px;
@@ -144,55 +141,6 @@ h4  {
   justify-content: space-between;
 }
 
-.card-category1 {
-  background-size: cover;
-  background-position: center;
-  background-image: linear-gradient(rgba(5, 10, 30, 0.1),rgba(200, 200, 220, 0.5)), url(asset-path("hotel.jpg"));
-  width: 200px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
-}
-.card-category2 {
-  background-size: cover;
-  background-position: center;
-  background-image: linear-gradient(rgba(5, 10, 30, 0.1),rgba(200, 200, 220, 0.5)), url(asset-path("rest.jpg"));
-  width: 200px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow:  1px 1px 1px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
-}
-.card-category3 {
-  background-size: cover;
-  background-position: center;
-  background-image: linear-gradient(rgba(5, 10, 30, 0.1),rgba(200, 200, 220, 0.5)), url(asset-path("cal.2.jpg"));
-  width: 200px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
-}
-
 .bottom-btn {
 margin-left: 300px;
 }
@@ -222,31 +170,80 @@ margin-left: 300px;
   height: 95vh !important;
 }
 
-.bloc {
-  padding: 32px 0;
-  margin: 32px 0;
-  color: grey;
-}
-.places-categories {
+.cards-home {
+  width: 60%;
   display: flex;
-  padding-left: 32px;
-  align-items: center;
   justify-content: space-between;
-  h2 {
-    font-weight: 100;
-    font-family: literata;
-    margin-bottom: 32px;
-  }
-  .places-category {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    p {
-      font-weight: 100;
-      margin-top: 10px;
-    }
+  margin-top: -10px;
+  //padding: 10px;
+}
+
+.card-home {
+  //display: flex;
+  width: 32%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  transition: scale .7s ease-out;
+  transform: scale(1);
+  &:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    transform: scale(1.03);
+    transition: scale .7s ease-out;
   }
 }
 
+.card-home > img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-home .card-home-infos h2 {
+  color: #14b8b9;
+  font-size: 26px;
+  margin: 0;
+  padding-top: 4px;
+  padding-bottom: 10px;
+}
+
+.card-home p {
+  color: #495057;
+  font-size: 14px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-home h3 {
+  font-family: literata;
+}
+
+.card-home .card-home-infos {
+  padding: 20px 15px 30px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.card-home-infos .card-home-user {
+  position: absolute;
+  right: 20px;
+  top: -30px;
+  width: 50px;
+}
+
+.descrption-home {
+  h2 {
+    font-family: literata;
+  }
+}
