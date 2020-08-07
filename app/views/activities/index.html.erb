@@ -1,15 +1,14 @@
 <div class="container-fluid py-1">
-<%= render 'shared/tab' %>
-  <div class='margin_filtres'>
-  <%= simple_form_for :search, url: trip_activities_path, method: 'GET', html: { class: 'form-inline' } do |f| %>
-    <%= f.input :price_max, placeholder: 'prix maximum', label: false, input_html: { value: @price_max} %>
-    <%= f.input :category, label: false, collection: Activity::CATEGORIES, prompt: 'catégorie', selected: @category, include_blank: 'Toutes' %>
-    <div>
-    <%= f.submit "Rechercher", class: "btn btn-primary hover_btn_search no_border background_color_grey border_light_grey border-right padding-12-px text_color_green" %>
-    </div>
-  <% end %>
-  </div>
-  </div>
+  <%= render 'shared/tab' %>
+  <%# <div class='margin_filtres'> %>
+    <%#= simple_form_for :search, url: trip_activities_path, method: 'GET', html: { class: 'form-inline' } do |f| %>
+    <%#= f.input :price_max, placeholder: 'prix maximum', label: false, input_html: { value: @price_max} %>
+    <%#= f.input :category, label: false, collection: Activity::CATEGORIES, prompt: 'catégorie', selected: @category, include_blank: 'Toutes' %>
+    <%# <div> %>
+    <%#= f.submit "Rechercher", class: "btn btn-primary hover_btn_search no_border background_color_grey border_light_grey border-right padding-12-px text_color_green" %>
+    <%# </div> %>
+    <%# end %>
+  <%# </div> %>
 
   <div class="content">
     <div class="cards">
