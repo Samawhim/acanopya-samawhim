@@ -234,13 +234,13 @@ file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1591094591/2
   )
 file = URI.open('https://res.cloudinary.com/djwsxwjql/image/upload/v1597323438/acanopya/photo-1527142879-95b61a0b8226_ejupk0_bq0mf4.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
-file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1590673098/photo-1499916078039-922301b0eb9b_m75ibp.jpg')
+file = URI.open('https://res.cloudinary.com/djwsxwjql/image/upload/v1597342596/acanopya/photo-1499916078039-922301b0eb9b_m75ibp_pzchxa.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
-file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1590674176/photo-1531835551805-16d864c8d311_gryqvy.jpg')
+file = URI.open('https://res.cloudinary.com/djwsxwjql/image/upload/v1597342631/acanopya/photo-1531835551805-16d864c8d311_gryqvy_lmquyj.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
-file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1591095640/253921093_il8sqp.jpg')
+file = URI.open('https://res.cloudinary.com/djwsxwjql/image/upload/v1597342648/acanopya/253921093_il8sqp_mzksln.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
-file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1590674450/photo-1509481799743-a6a536be8100_yvx8dc.jpg')
+file = URI.open('https://res.cloudinary.com/djwsxwjql/image/upload/v1597342674/acanopya/photo-1509481799743-a6a536be8100_yvx8dc_tqgp48.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
 
   f3 = Flat.create!(  # f5pret
