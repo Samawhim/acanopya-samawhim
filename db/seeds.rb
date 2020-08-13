@@ -232,7 +232,7 @@ file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1591094591/2
   label: 'ATR',
   availability: true
   )
-file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1591001553/photo-1527142879-95b61a0b8226_ejupk0.jpg')
+file = URI.open('https://res.cloudinary.com/djwsxwjql/image/upload/v1597323438/acanopya/photo-1527142879-95b61a0b8226_ejupk0_bq0mf4.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
 file = URI.open('https://res.cloudinary.com/doprhpcd8/image/upload/v1590673098/photo-1499916078039-922301b0eb9b_m75ibp.jpg')
   f2.photos.attach(io: file, filename: 'nes1.png', content_type: 'image/png')
